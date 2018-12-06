@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   deal_key.c                                         :+:      :+:    :+:   */
+/*   ft_sbtlejoin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 17:42:26 by apelissi          #+#    #+#             */
-/*   Updated: 2018/11/29 18:26:34 by apelissi         ###   ########.fr       */
+/*   Created: 2018/09/28 13:49:49 by apelissi          #+#    #+#             */
+/*   Updated: 2018/09/28 13:50:44 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/wolf.h"
+#include "libft.h"
 
-int		deal_key(int key, t_env *te)
+char		*ft_sbtlejoin(char *old, char *ajout)
 {
-	if (key == W || key == UP)
-		te->pe->pos_y--;
-	if (key == S || key == DOWN)
-		te->pe->pos_y++;
-	if (key == A || key ==  LEFT)
-		te->pe->pos_x--;
-	if (key == D || key ==  RIGHT)
-		te->pe->pos_x++;
-	write(1, "x = ", 4);
-	ft_putnbr(te->pe->pos_x);
-	write(1, " y = ", 5);
-	ft_putnbr(te->pe->pos_y);
-	write(1, "\n", 1);
-	return(0);
+	char	*new;
+
+	if (!old && !ajout)
+		return (NULL);
+	else if (!old)
+		return (ft_strdup(ajout));
+	else if (!ajout)
+		return (old);
+	new = ft_strjoin(old, ajout);
+	return (new);
 }

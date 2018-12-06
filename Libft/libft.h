@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 12:56:06 by apelissi          #+#    #+#             */
-/*   Updated: 2018/10/10 11:27:35 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/09/28 13:51:52 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,5 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_strlchr(const char *s, char c);
 t_list				*ft_lstinit(void *content, size_t size, t_list *next);
-int					cycle_detector(const t_list *list);
-
+char				*ft_sbtlejoin(char *old, char *ajout);
 #	endif

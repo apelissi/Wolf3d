@@ -6,7 +6,7 @@
 #    By: apelissi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/01 14:48:06 by apelissi          #+#    #+#              #
-#    Updated: 2018/10/10 11:26:30 by apelissi         ###   ########.fr        #
+#    Updated: 2018/10/01 21:08:08 by apelissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC = gcc
@@ -80,20 +80,20 @@ SRC = ft_atoi.c \
 	  ft_lstmap.c \
 	  ft_strlchr.c \
 	  ft_lstinit.c \
-	  cycle_detector.c
+	  ft_sbtlejoin.c
 
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
 
 $(NAME):
-	$(CC) $(CFLAGS)  $(SRC)
-	ar rc $(NAME) $(OBJ)
+	@$(CC) $(CFLAGS)  $(SRC)
+	@ar rc $(NAME) $(OBJ)
 
 clean:
-	/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
