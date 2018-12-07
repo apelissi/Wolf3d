@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 12:19:06 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/06 15:32:41 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/07 17:04:23 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	get_dim(t_map *map, int fd)
 		return (0);
 	if (!(line_handler(map, line)))
 		return (0);
+	free(line);
 	return (1);
 }
 

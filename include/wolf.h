@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 17:27:55 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/06 15:54:15 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/07 16:14:47 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef	struct		s_perso
 	int		pos_x;
 	int		pos_y;
 	int		pos_z;
+	int		mv_x;
+	int		mv_y;
 	float	angle;
 
 }					t_perso;
@@ -56,5 +58,8 @@ int		get_map(t_map *map, int fd);
 void	print_map(char **grid);
 void	fill_img(t_env *e);
 void	get_grid(t_env *e);
+int		key_press(int k, t_env *e);
+int		key_release(int k, t_env *e);
+int		expose_hook(t_env *e);
 
 #		endif
