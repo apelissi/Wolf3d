@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 17:27:55 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/11 13:38:38 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/11 18:06:55 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #define VD 5
 #define VR 4
 #define	TS 200
-#define PI 3.14159265358
+#define PI 3.14159265359
 
 typedef	struct		s_map
 {
