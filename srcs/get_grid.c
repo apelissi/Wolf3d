@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 11:58:12 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/11 13:36:26 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/11 14:32:02 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		get_color(char c, t_env *e, int i, int j)
 	if (c == '@')
 	{
 		e->pe->pos_x = j * TS + TS / 2;
-		e->pe->pos_y = i * TS + TS / 2;	
+		e->pe->pos_y = i * TS + TS / 2;
 		return (G4);
 	}
 	if (c == '0')

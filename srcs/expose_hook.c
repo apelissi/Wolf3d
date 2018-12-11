@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 13:05:58 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/11 13:38:09 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/11 14:31:34 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int		expose_hook(t_env *e)
 	e->data = e->data_map;
 	get_perso(e, e->pe);
 	write(1, "x = ", 4);
-	ft_putnbr(e->pe->pos_x);
-	write(1, " m = ", 5);
 	ft_putnbr(e->pe->mv_y);
 	write(1, " y = ", 5);
 	ft_putnbr(e->pe->pos_y);
@@ -38,6 +36,5 @@ int		expose_hook(t_env *e)
 	write(1, "°\n", 4);
 	mlx_put_image_to_window(e->ptr, e->win, e->img, 0, 0);
 	erase_player(e, e->pe->y_map, e->pe->x_map);
-	//	mlx_destroy_image(e->ptr, e->img);
 	return (i);
-	}
+}
