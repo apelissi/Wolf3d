@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:25:58 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/10 14:12:52 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/11 13:21:31 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ void	init(t_env *e)
 	e->win_x = 500;
 	e->win_y = 500;
 	e->f = 0;
-	e->pe->pos_x = 0;
-	e->pe->pos_y = 0;
 	e->pe->angle = 0;
 	e->pe->mv_y = 0;
 	e->pe->mv_x = 0;
-	e->pe->mv_r = 0;
+	e->pe->mv_r = 0;	
 }
 
 int		ft_mlx(t_env *e)
@@ -35,6 +33,7 @@ int		ft_mlx(t_env *e)
 	//	mlx_key_hook(e->win, deal_key, e);
 	//	mlx_mouse_hook(e->win, deal_mouse, e);
 	//	mlx_hook(e->win, 6, (1L << 6), mouse_move_hook, e);
+	mlx_loop_hook(e->ptr, expose_hook, e);
 	mlx_expose_hook(e->win, expose_hook, e);
 	mlx_loop(e->ptr);
 	return (0);

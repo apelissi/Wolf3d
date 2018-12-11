@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 17:27:55 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/10 16:43:02 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/11 13:38:38 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 #include "../Libft/libft.h"
 #include "../miniLibX/mlx.h"
 
-#define VD 10
-#define VR 5
+#define VD 5
+#define VR 4
 #define	TS 200
 #define PI 3.14159265358
 
@@ -68,5 +68,6 @@ void	get_perso(t_env *e, t_perso *p);
 int		key_press(int k, t_env *e);
 int		key_release(int k, t_env *e);
 int		expose_hook(t_env *e);
+void	erase_player(t_env *e, int y_map, int x_map);
 
 #		endif

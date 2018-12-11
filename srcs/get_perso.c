@@ -6,48 +6,85 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 13:46:04 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/10 17:19:13 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/11 13:45:22 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/wolf.h"
 
-void	make_player(t_env *e, int y_map, int x_map, int i)
+void	erase_player(t_env *e, int y_map, int x_map)
 {
 	int	a;
 	int b;
 
-	a = (y_map > i) ? y_map - i : 0;
-	while (a <= e->win_y && a <= y_map + i)
+	a = (y_map > 5) ? y_map - 5 : 0;
+	while (a <= e->win_y && a <= y_map + 5)
 	{
-		b = (x_map > i) ? x_map - i : 0;
-		while (b <= e->win_x && b <= x_map + i)
+		b = (x_map > 5) ? x_map - 5 : 0;
+		while (b <= e->win_x && b <= x_map + 5)
 		{
-			e->data_map[a * e->win_x + b] = (i == 3) ? BLUE : RED;
+			if (e->data_map[a * e->win_x + b] == BLUE)
+				e->data_map[a * e->win_x + b] = G4;
 			b++;
 		}
 		a++;
 	}
+}
 
+
+void	make_player(t_env *e, int y_map, int x_map)
+{
+	int	a;
+	int b;
+
+	a = (y_map > 5) ? y_map - 5 : 0;
+	while (a <= e->win_y && a <= y_map + 5)
+	{
+		b = (x_map > 5) ? x_map - 5 : 0;
+		while (b <= e->win_x && b <= x_map + 5)
+		{
+			if (e->data_map[a * e->win_x + b] == G4)
+				e->data_map[a * e->win_x + b] = BLUE;
+			b++;
+		}
+		a++;
+	}
+}
+
+int		check_pos(int x, int y, t_map *map)
+{
+	
+	if (x < 0 || x > TS * map->t_x || y < 0 || y > TS * map->t_y)
+		return (0);
+	if (map->grid[y / TS][x / TS] == '1')
+		return (0);
+	return (1);
 }
 
 void	get_perso(t_env *e, t_perso *p)
-{	
+{
+	int	tmp_x;
+	int	tmp_y;
+
 	p->angle += p->mv_r * VR;
 	p->angle = (p->angle >= 360) ? p->angle % 360 : p->angle;
 	p->angle = (p->angle < 0) ? 360 + p->angle : p->angle;
-	p->pos_x += sin((float)p->angle / 180 * PI) * (float)VD * (float)p->mv_y;
-	p->pos_y += cos((float)p->angle / 180 * PI) * (float)VD * (float)p->mv_y;
+	tmp_x = p->pos_x + sin((float)p->angle / 180 * PI) * (float)VD * (float)p->mv_y;
+	tmp_y = p->pos_y + cos((float)p->angle / 180 * PI) * (float)VD * (float)p->mv_y;
+	if (check_pos(tmp_x, tmp_y, e->map))
+	{
+		p->pos_x = tmp_x;
+		p->pos_y = tmp_y;
+		write(1, "bob\n", 4);
+	}
 //	p->pos_x += cos((float)p->angle / 180 * PI) * (float)VD * (float)p->mv_x;
 //	p->pos_y += sin((float)p->angle / 180 * PI) * (float)VD * (float)p->mv_x;
-	if (p->pos_x >= 0 && p->pos_x < TS * e->map->t_x)
-		p->x_map = p->pos_x * (float)e->win_x / (TS * e->map->t_x);
-	if (p->pos_y >= 0 && e->pe->pos_y < TS * e->map->t_y)
-		p->y_map = p->pos_y * (float)e->win_y / (TS * e->map->t_y);
-	make_player(e, p->y_map, p->x_map, 3);
+	p->x_map = p->pos_x * (float)e->win_x / (TS * e->map->t_x);
+	p->y_map = p->pos_y * (float)e->win_y / (TS * e->map->t_y);
+	make_player(e, p->y_map, p->x_map);
 
 
-	p->pos_x += 8 * sin((float)p->angle * PI / 180) * VD;
+/*	p->pos_x += 8 * sin((float)p->angle * PI / 180) * VD;
 	p->pos_y += 8 * cos((float)p->angle * PI / 180) * VD;
 	if (p->pos_x >= 0 && p->pos_x < TS * e->map->t_x)
 		p->x_map = p->pos_x * e->win_x / (TS * e->map->t_x);
@@ -55,6 +92,6 @@ void	get_perso(t_env *e, t_perso *p)
 		p->y_map = p->pos_y * e->win_y / (TS * e->map->t_y);
 	make_player(e, p->y_map, p->x_map, 1);
 	p->pos_x -= 8 * sin((float)p->angle * PI / 180) * VD;
-	p->pos_y -= 8 * cos((float)p->angle * PI / 180) * VD;
+	p->pos_y -= 8 * cos((float)p->angle * PI / 180) * VD;*/
 
 }
