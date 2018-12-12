@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 12:19:06 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/07 17:04:23 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/12 12:47:07 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	get_dim(t_map *map, int fd)
 	char	*line;
 	char	*temp;
 	char	buff[2];
-	int		lu;
 
 	line = NULL;
 	buff[0] = '*';

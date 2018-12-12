@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 17:27:55 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/11 18:06:55 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/12 13:19:25 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,12 @@
 typedef	struct		s_map
 {
 	char	**grid;
+	int		*data_map;
+	void	*img_map;
 	int		t_x;
 	int		t_y;
+	int		img_x;
+	int		img_y;
 }					t_map;
 
 typedef	struct		s_perso
@@ -52,11 +56,9 @@ typedef struct		s_env
 	void	*ptr;
 	void	*win;
 	int		*data;
-	int		*data_map;
 	int		win_x;
 	int		win_y;
 	void	*img;
-	void	*img_map;
 }					t_env;
 
 int		ft_mlx(t_env *e);
@@ -69,5 +71,6 @@ int		key_press(int k, t_env *e);
 int		key_release(int k, t_env *e);
 int		expose_hook(t_env *e);
 void	erase_player(t_env *e, int y_map, int x_map);
+void	get_view(t_env *e);
 
 #		endif
