@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 13:05:58 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/12 17:13:25 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/13 18:15:41 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int		expose_hook(t_env *e)
 		e->f = e->f + 1;
 	}
 	get_perso(e, e->pe);
-//	get_view(e);
-//	mlx_put_image_to_window(e->ptr, e->win, e->img, 0, 0);
+	get_view(e);
+	mlx_put_image_to_window(e->ptr, e->win, e->img, 0, 0);
 	mlx_put_image_to_window(e->ptr, e->win, e->map->img_map, 0, 0);
 	erase_player(e, e->pe->y_map, e->pe->x_map);
 	return (i);

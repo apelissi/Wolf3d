@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 11:58:12 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/12 13:29:28 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/13 16:30:50 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,6 @@ void	get_grid(t_env *e)
 		}
 		i++;
 	}
-	make_line(e);
-	make_column(e);
+//	make_line(e);
+//	make_column(e);
 }

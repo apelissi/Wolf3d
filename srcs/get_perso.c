@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 13:46:04 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/12 13:25:32 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/13 16:28:06 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,20 @@ int		check_pos(int x, int y, t_map *map)
 
 void	get_perso(t_env *e, t_perso *p)
 {
-	int	x;
-	int	y;
+	float	x;
+	float	y;
 
 	p->angle += p->mv_r * VR;
 	if (p->angle >= 360 || p->angle < 0)
 		p->angle = (p->angle < 0) ? 360 + p->angle : p->angle % 360;
-	x = p->pos_x + sin((float)p->angle / 180 * PI) * VD * p->mv_y;
-	y = p->pos_y + cos((float)p->angle / 180 * PI) * VD * p->mv_y;
+	x = (float)p->pos_x + sin((float)p->angle / 180 * PI) * VD * (float)p->mv_y;
+	y = (float)p->pos_y + cos((float)p->angle / 180 * PI) * VD * (float)p->mv_y;
 	x += cos((float)p->angle / 180 * PI) * (float)VD * p->mv_x;
 	y -= sin((float)p->angle / 180 * PI) * (float)VD * p->mv_x;
-	if (check_pos(x, y, e->map))
+	if (check_pos((int)x, (int)y, e->map))
 	{
-		p->pos_x = x;
-		p->pos_y = y;
+		p->pos_x = (int)x;
+		p->pos_y = (int)y;
 	}
 	else if (check_pos(p->pos_x, y, e->map))
 		p->pos_y = y;
