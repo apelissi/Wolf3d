@@ -48,7 +48,7 @@ float		raycast(float d, t_perso *p, t_map *m)
 	while (x_t > 0 && x_t < m->t_x * TS && y_t > 0 && y_t < m->t_y * TS
 			&& (m->grid[(int)(x_t / TS)][(int)(y_t / TS)] != '1'))
 	{
-		point((int)x_t, (int)y_t, m);
+	//	point((int)x_t, (int)y_t, m);
 		x_t = x_t + sin(d / 180 * PI);
 		y_t = y_t + cos(d / 180 * PI);
 	}
