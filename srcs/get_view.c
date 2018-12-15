@@ -27,50 +27,55 @@ void	make_co(int h, int i, t_env *e)
 	int a;
 
 	a = 0;
-	a = (e->win_y - h) / 2;
+	i =  e->win_x - i;
 	while (a < e->win_y) 
 	{			
 		e->data[i + e->win_x * a] = (a > (e->win_y - h) / 2 && a < (e->win_y + h) / 2) ? 
-									RED : BLACK;
+									G3 : G1;
 		a++;
 	}
 }
 
 
-int		raycast(int i, t_perso *p, t_map *m, t_env *e)
+float		raycast(float d, t_perso *p, t_map *m)
 {
-	float	d;
-	int		dir_y;
 	float	x_t;
 	float	y_t;
 	int		h;
 
-	d = (float)p->angle - 30 + (float)i * 60 / (float)e->win_x;
-	d = (d < 0) ? 360 - d : d;
-	dir_y = (d > 90 && d < 270) ? -1 : 1;
 	x_t = p->pos_x;
 	y_t = p->pos_y;
 	while (x_t > 0 && x_t < m->t_x * TS && y_t > 0 && y_t < m->t_y * TS
 			&& (m->grid[(int)(x_t / TS)][(int)(y_t / TS)] != '1'))
 	{
 		point((int)x_t, (int)y_t, m);
-		x_t = x_t + sin((float)d / 180 * PI);
-		y_t = y_t + cos((float)d / 180 * PI);
+		x_t = x_t + sin(d / 180 * PI);
+		y_t = y_t + cos(d / 180 * PI);
 	}
 	h = 0;
-	return ((int)hypotf((float)(p->pos_x) - x_t, (float)(p->pos_y) - y_t));
+	return (hypotf((float)(p->pos_x) - x_t, (float)(p->pos_y) - y_t));
 }
 
 void	get_view(t_env *e)
 {
 	int	i;
-	int h;
+	float	d_mur;
+	float	d_ecr;
+	float	h;
+	float	d;
 
 	i = 0;
+	d_ecr = (float)e->win_x / (2 * tan(30 * PI / 180));
 	while (i <= e->win_x)
 	{
-		h = raycast(i, e->pe, e->map, e);
-		make_co(h, i, e);
+		d = (float)e->pe->angle - 30 + (float)i * 60 / (float)e->win_x;
+		d = (d < 0) ? 360 - d : d;
+		d = (d >= 360) ? d - 360 : d;
+		d_mur = raycast(d, e->pe, e->map);
+		d = (d > (float)e->pe->angle) ? d - (float)e->pe->angle : (float)e->pe->angle - d;
+		d_mur = d_mur * cosf(d / 180 * PI);
+		h = (d_ecr * TS) / d_mur;
+		make_co((int)h, i, e);
 		i++;
 	}
 
