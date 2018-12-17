@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 17:27:55 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/12 13:19:25 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/17 13:47:17 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 #define VD 5
 #define VR 4
-#define	TS 200
+#define	TS 100
 #define PI 3.14159265359
 
 typedef	struct		s_map
@@ -72,5 +72,6 @@ int		key_release(int k, t_env *e);
 int		expose_hook(t_env *e);
 void	erase_player(t_env *e, int y_map, int x_map);
 void	get_view(t_env *e);
+void	clean(t_env *e);
 
 #		endif

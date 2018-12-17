@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:10:07 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/13 18:19:44 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/17 14:56:37 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	point(int x, int y, t_map *m)
 
 	x_m = x * m->img_x / (TS * m->t_x);
 	y_m = y * m->img_y / (TS * m->t_y);
+	if 	(m->data_map[x_m + y_m * m->img_x] != BLACK)
 	m->data_map[x_m + y_m * m->img_x] = RED;
 }
 
@@ -46,12 +47,16 @@ float		raycast(float d, t_perso *p, t_map *m)
 	x_t = p->pos_x;
 	y_t = p->pos_y;
 	while (x_t > 0 && x_t < m->t_x * TS && y_t > 0 && y_t < m->t_y * TS
-			&& (m->grid[(int)(x_t / TS)][(int)(y_t / TS)] != '1'))
+			&& (m->grid[(int)(y_t / TS)][(int)(x_t / TS)] != '1'))
 	{
-	//	point((int)x_t, (int)y_t, m);
+		point((int)x_t, (int)y_t, m);
+	//	write(1, &m->grid[(int)(x_t / TS)][(int)(y_t / TS)], 1);
+	//	write(1, "\n", 1);
 		x_t = x_t + sin(d / 180 * PI);
 		y_t = y_t + cos(d / 180 * PI);
 	}
+//	wirite(1, &m->grid[(int)(x_t / TS)][(int)(y_t / TS)], 1);
+//	write(1, "\n", 1);
 	h = 0;
 	return (hypotf((float)(p->pos_x) - x_t, (float)(p->pos_y) - y_t));
 }
@@ -69,14 +74,31 @@ void	get_view(t_env *e)
 	while (i <= e->win_x)
 	{
 		d = (float)e->pe->angle - 30 + (float)i * 60 / (float)e->win_x;
-		d = (d < 0) ? 360 - d : d;
+		d = (d < 0) ? 360 + d : d;
 		d = (d >= 360) ? d - 360 : d;
+		if (i == 0 || i == e->win_x)
+		{
+			ft_putnbr((int)d);
+			write(1, "  ", 2);
+		}
+		//ft_putnbr((int)d);
+	//	write(1, "\n", 1);
 		d_mur = raycast(d, e->pe, e->map);
+		if (i == 0 || i == e->win_x)
+		{
+			ft_putnbr((int)d_mur);
+			write(1, "  ", 2);
+		}
+	//	ft_putnbr((int)d_mur);
+	//	write(1, "\n", 1);
 		d = (d > (float)e->pe->angle) ? d - (float)e->pe->angle : (float)e->pe->angle - d;
 		d_mur = d_mur * cosf(d / 180 * PI);
 		h = (d_ecr * TS) / d_mur;
 		make_co((int)h, i, e);
 		i++;
 	}
-
+	ft_putnbr(e->pe->pos_x);
+	write(1, "  ", 2);
+	ft_putnbr(e->pe->pos_y);
+	write(1, "\n", 1);
 }
