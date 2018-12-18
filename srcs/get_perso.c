@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 13:46:04 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/13 16:28:06 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/18 15:20:31 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	make_player(t_env *e, int y_map, int x_map)
 
 int		check_pos(int x, int y, t_map *map)
 {
-	if (x < 0 || x > TS * map->t_x || y < 0 || y > TS * map->t_y)
+	if (x < 0 || x >= TS * map->t_x || y < 0 || y >= TS * map->t_y)
 		return (0);
 	if (map->grid[y / TS][x / TS] == '1')
 		return (0);
