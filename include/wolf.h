@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 17:27:55 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/17 13:47:17 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/21 14:27:18 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@ typedef struct		s_env
 	void	*img;
 }					t_env;
 
+typedef struct		s_column
+{
+	float		d_mur;
+	int			num;
+	int			face;
+}					t_column;
+
 int		ft_mlx(t_env *e);
 int		deal_key(int key, t_env *te);
 int		get_map(t_map *map, int fd);
@@ -73,5 +80,6 @@ int		expose_hook(t_env *e);
 void	erase_player(t_env *e, int y_map, int x_map);
 void	get_view(t_env *e);
 void	clean(t_env *e);
+void	get_column(t_column *c, int x_mur, int y_mur, float x_touch, float y_touch);
 
 #		endif
