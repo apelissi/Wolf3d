@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 17:27:55 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/21 14:27:18 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/21 17:46:49 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef	struct		s_map
 	int		t_y;
 	int		img_x;
 	int		img_y;
+	int		pal;
 }					t_map;
 
 typedef	struct		s_perso

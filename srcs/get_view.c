@@ -6,7 +6,7 @@
 /*   By: apelissi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:10:07 by apelissi          #+#    #+#             */
-/*   Updated: 2018/12/21 16:01:03 by apelissi         ###   ########.fr       */
+/*   Updated: 2018/12/21 17:45:44 by apelissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ int	ft_color(int num)
 	if (num == 0)
 		return (RED);
 	else if (num == 1)
-		return (BLUE);
+		return (GREEN);
 	else if (num == 2)
 		return (YELLOW);
 	else if (num == 3)
 		return (CYAN);
+	else if (num == -1)
+		return (BLACK);
 	return (G3);
 }
 
@@ -68,8 +70,8 @@ void	raycast(float d, t_perso *p, t_map *m, t_column *c)
 		x_t = x_t + sinf(d / 180 * PI);
 		y_t = y_t + cosf(d / 180 * PI);
 	}
-//	printf("d = %f et x_t = %f et y_t = %f\n", d, x_t, y_t);
-	get_column(c, (int)x_t / TS, (int)y_t / TS, x_t, y_t);
+	if (m->pal)
+		get_column(c, (int)x_t / TS, (int)y_t / TS, x_t, y_t);
 	c->d_mur = hypotf((float)(p->pos_x) - x_t, (float)(p->pos_y) - y_t);
 }
 
